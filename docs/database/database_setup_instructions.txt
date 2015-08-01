@@ -1,0 +1,31 @@
+data base setp for institute
+enoble_schema.sql  : file contains the script to create new schema/user ENOBLE in the database,and creating GRANT to user .
+enoble_create_tables.sql : file contains table create statements for the user ENOBLE.tables created (ROLE ,ADDRESS ,COURSE ,SECTION ,USER_T ,BATCH ,COURSE_SECTION ,TRAINEE ,TRAINEE_BATCH ,TRAINER ,TRAINER_BATCH,SCHEDULE) .
+
+
+1. copy files from git repository institute_project
+
+ institute_project/docs/sql/enoble_schema.sql 
+institute_project/docs/sql/enoble_create_tables.sql 
+
+to default folder of your sql developer . (refer how to set default folder for sql developer)
+
+
+2. login as sys admin in sql developer.
+run the two script files in order.
+
+@enoble_schema.sql 
+@enoble_create_tables.sql
+
+(if above scripts run successfully with out any errors check the database)
+3.Check the database 
+login using
+ user: enoble 
+password:password
+4.check the tables for user enoble & run below query .
+select count(*) from all_tables where OWNER='ENOBLE'; 
+
+output : 12 
+
+** how to set default folder for sql developer
+Tools>Preferences>Database>Worksheet Parameters. You can browse to a new location under "Select default path to look for scripts"
