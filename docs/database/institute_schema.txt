@@ -1,0 +1,34 @@
+--1.create perminent table space file
+--2.created temp table space
+--3.created user ENOBLE/password
+--4.assign system privileges to ENOBLE
+
+
+
+CREATE TABLESPACE tbs_perm_enoble_01
+  DATAFILE 'tbs_perm_enoble_01.dat' 
+    SIZE 10M
+    REUSE
+    AUTOEXTEND ON NEXT 10M MAXSIZE 200M;
+
+CREATE TEMPORARY TABLESPACE tbs_temp_enoble_01
+  TEMPFILE 'tbs_temp_enoble_01.dbf'
+    SIZE 5M
+    AUTOEXTEND ON;
+
+
+CREATE USER ENOBLE
+  IDENTIFIED BY password
+  DEFAULT TABLESPACE tbs_perm_enoble_01
+  TEMPORARY TABLESPACE tbs_temp_enoble_01
+  QUOTA 20M on tbs_perm_enoble_01;
+
+GRANT CREATE SESSION TO ENOBLE;
+GRANT CREATE TABLE TO ENOBLE;
+GRANT CREATE VIEW TO ENOBLE;
+GRANT CREATE ANY TRIGGER TO ENOBLE;
+GRANT CREATE ANY PROCEDURE TO ENOBLE;
+GRANT CREATE SEQUENCE TO ENOBLE;
+GRANT CREATE SYNONYM TO ENOBLE;
+GRANT CREATE TYPE TO ENOBLE;
+
