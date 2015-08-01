@@ -6,7 +6,5 @@ https://windows.github.com/
 https://help.github.com/articles/fetching-a-remote/
 4.merge
 https://help.github.com/articles/resolving-merge-conflicts/
-welcome
-updated by Anitha
-updated by Aruna 
+
 
