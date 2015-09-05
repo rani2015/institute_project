@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Claims Template Designer</title>
+        <!-- Make sure the path to CKEditor is correct. 
+		C:\Users\jitesh\Desktop\PROJECT\GLI\ckeditor
+		-->
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+		<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.5.2/jquery-ui.min.js"></script>
+
+        <script src="ckeditor.js"></script>
+		<script src="adapters/jquery.js"></script>
+		<style type="text/css" media="Screen">
+			#schema {
+			   margin-top:10px;
+			   margin-top:70px;
+			   width:180px;
+			   background:white;
+			   margin-left:10px;
+			   vertical-align:top;
+			}
+	 
+			#contentwrapper {
+			   height:0px;
+			   background:white;
+			   margin-left:200px;
+			}
+		</style>
+	<script language="JavaScript">
+		function toggleDiv(divid){
+				var element=divid+"_child";
+				obj=document.getElementById(element);
+				col=document.getElementById(divid);
+				if(obj.style.display == 'none'){
+						document.getElementById(element).style.display = 'block';
+						col.innerHTML="[-]";
+			}else{
+			  document.getElementById(element).style.display = 'none';
+			  col.innerHTML="[+]";
+			}
+		  }
+	</script>
+ 
+			<style>
+
+		div.editable
+		{
+			border: solid 2px transparent;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		div.editable:hover
+		{
+			border-color: black;
+		}
+
+	</style>
+	<script>
+
+		// Uncomment the following code to test the "Timeout Loading Method".
+		// CKEDITOR.loadFullCoreTimeout = 5;
+
+		window.onload = function() {
+			// Listen to the double click event.
+			if ( window.addEventListener )
+				document.body.addEventListener( 'dblclick', onDoubleClick, false );
+			else if ( window.attachEvent )
+				document.body.attachEvent( 'ondblclick', onDoubleClick );
+
+		};
+
+		function onDoubleClick( ev ) {
+			// Get the element which fired the event. This is not necessarily the
+			// element to which the event has been attached.
+			var element = ev.target || ev.srcElement;
+
+			// Find out the div that holds this element.
+			var name;
+
+			do {
+				element = element.parentNode;
+				//alert('name:'+name +"="+element.nodeName.toLowerCase()+ " " +element.className+" "+element.className.indexOf( 'editable' ));
+			}while ( element && ( name = element.nodeName.toLowerCase() ) && ( element.className.indexOf( '_child_' ) == -1 ) && name != 'body' );
+			
+			//alert('name:'+name);
+			//alert(name+' :'+ element.className);
+		
+			if ( name == 'div' && element.className.indexOf( '_child_' ) != -1 ){
+				replaceDiv( element );
+			}
+		}
+
+		var editor;
+
+		function replaceDiv( div ) {
+			//if ( editor )
+			//editor.destroy();
+			// alert("Replacing the contents:"+div.innerHTML);
+			//editor = CKEDITOR.replace( div );
+			//editor = CKEDITOR.appendTo( 'editor1',div);
+			//editor = CKEDITOR.instances['editor1'];
+			//editor.appendTo(div);
+			editor = CKEDITOR.instances.editor1;
+			
+			editor.insertText("$"+ div.innerHTML.replace('<p>','').replace('</p>','').toUpperCase().trim()+"$");
+		}
+
+		function InsertText() {
+			// Get the editor instance that we want to interact with.
+			var editor = CKEDITOR.instances.editor1;
+			var value = document.getElementById( 'txtArea' ).value;
+
+			// Check the active editing mode.
+			if ( editor.mode == 'wysiwyg' )
+			{
+				// Insert as plain text.
+				// http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-insertText
+				editor.insertText( value );
+			}
+			else
+				alert( 'You must be in WYSIWYG mode!' );
+		}
+
+	</script>
+	
+	</head>
+    <body>
+		<center>
+				<table width="955"  border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td background="lgtop.gif"><img src="spacer.gif" width="1" height="1"></td>
+					</tr>
+					<tr>
+						<td background="lgmidcontent.gif">
+							<table>
+								<tr>
+									<td align="left"><h2> Claim Template Designer</h2></td>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+					 </tr>
+					  <tr>
+						<td background="lgbottom.gif"><img src="spacer.gif" width="1" height="1"></td>
+					  </tr>
+				</table>
+		</center>
+        <form>
+			<div id="maincontainer">
+				<div id="contentwrapper">
+					<table>
+					<tr>
+						<td align="left"><h3>Template Name:</h3></td>
+						<td align="left"><input type="text" width="900px" name="claimLetterName"></td>
+						<td  align="right"><input type="submit" name="Save" value="Save"></td>
+						<td  align="left"><input type="submit" name="Preview" value="Preview"></br></td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<textarea id="editor1" class="txtDropTarget" name="editor1">
+								This is my textarea to be replaced with CKEditor.
+							</textarea>
+					</td>
+					</tr>
+					</table>
+				</div>
+				 <div id="schema">
+                        <fieldset>
+							<legend>Click to insert:</legend>
+								  <table>
+								  <tr>
+									<td>
+									  <a href="javascript:;" onClick="toggleDiv('1')"><div id="1" style="margin-left: 0;display: inline;">[+]</div></a>
+									  <strong>Claim Details</strong>
+									  <div id="1_child" style="display:none">
+											  <div class="1_child_1"><p>Claim_No</p></div>
+											  <div class="1_child_2"><p>Claim_Date</p></div>
+											  <div class="1_child_3"><p>Claimnt</p></div>
+									  </div>
+									</td>
+								  </tr>
+								  <tr>
+									<td>
+										<a href="javascript:;" onClick="toggleDiv('2')"><div id="2" style="margin-left: 0;display: inline;">[+]</div></a>
+										<strong>Claimant Details</strong>
+										  <div id="2_child" style="display:none">
+												  <div class="2_child_1"><p>Name</p></div>
+												  <div class="2_child_2"><p>Address</p></div>
+												  <div class="2_child_3"><p>Phone</p></div>
+										  </div>
+									</td>
+								  </tr>
+								  <tr>
+									<td>
+										<a href="javascript:;" onClick="toggleDiv('3')"><div id="3" style="margin-left: 0;display: inline;">[+]</div></a>
+										<strong>Features</strong>
+										  <div id="3_child" style="display:none">
+												  <div class="3_child_1"><p>Feature1</p></div>
+												  <div class="3_child_2"><p>Feature2</p></div>
+												  <div class="3_child_3"><p>Feature3</p></div>
+										  </div>									
+									</td>
+								  </tr>
+								  </table>
+						</fieldset>
+                </div>
+			</div>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+
+				CKEDITOR.replace( 'editor1');
+            </script>
+        </form>
+    </body>
+</html>
