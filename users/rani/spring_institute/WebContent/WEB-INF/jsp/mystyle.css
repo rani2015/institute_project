@@ -1,0 +1,85 @@
+@CHARSET "ISO-8859-1";
+
+.button {
+	background-color: #ff0000;
+	border: solid;
+	font-style: italic;
+	color: black;
+}
+.header{
+	background-color: #0000d2;
+	font-family: cursive;
+	font-size: large;
+	color: black;
+	text-align: center;
+}
+.div {
+	border: thin;
+	font-size: medium;
+	color: #000080;
+	text-align: left;
+}
+
+.body{
+	
+	text-align: center;
+	background-color: #bfebff;
+	font: bold;
+}
+.table{
+	border: thin;
+	border-color: #000040;
+	font-size: medium;
+	color: #400040;
+	background-color: #aae3ff;
+	text-align: center;
+}
+.tree{
+	border: thin;
+	border-color: #000040;
+	font-size: medium;
+	color: #400040;
+	background-color: #aae3ff;
+	text-align: center;
+}
+.link{
+	font: small-caps;
+	font-style: oblique;
+	color: #804040;
+}
+.tdLable{
+	
+}
+tr:nth-of-type(odd) {
+      background-color:#66cdff;
+      font-size: medium;
+    }
+    tr:nth-of-type(even) {
+      background-color:#e4e4e4;
+      font-size: medium;
+    }
+    treenode:nth-of-type(odd) {
+      background-color:#66cdff;
+      font-size: medium;
+    }
+    treenode:nth-of-type(even) {
+      background-color:#e4e4e4;
+      font-size: medium;
+    }
+    .error{
+    font: italic;
+    font-size: medium;
+    color: black;
+     background-color: #ff0000;
+    }
+    .message{
+    font: italic;
+    font-size: medium;
+    color: black;
+    background-color: #17b4ff;
+    }
+    .h2{
+    color: #0000ff;
+    font-style: normal;
+    font-size: large;
+    }

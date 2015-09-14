@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="com.institute.model">
+<class name="Course" table="COURSE_T">
+<meta attribute="class-description">Course class contains the course details </meta>
+<id name="courseId" column="C_ID" type="string"/>
+<property name="courseName" column="C_NAME" type="string"/>
+<property name="courseFee" column="C_FEE" type="double"/>
+<property name="courseHours" column="C_HOUR" type="int"/>
+<set name="students" table="STUD_COURSE_T" lazy="true"
+            inverse="true"  fetch="join" >
+            <key column="C_ID"/>
+            <many-to-many column="S_ID"  class="Student" />
+        </set>
+       
+</class>
+<class name="Student" table="STUDENT_T">
+		<meta attribute="class-description">
+			This Student class contains the Student details.
+		</meta>
+		<id name="studentId" column="S_ID" type="int"/>
+		<property name="firstName" column="FIRST_NAME" type="string" not-null="true" />
+		<property name="lastName" column="LAST_NAME" type="string" />
+		<property name="dateOfBirth" column="DATE_OF_BIRTH" type="date" not-null="true"/>
+		<property name="age" column="AGE" type="int"/>
+		<property name="phoneNo" column="PHONE_NO" type="string" />
+		<property name="cellNo" column="CELL_NO" type="string" />
+		<property name="emailId" column="EMAIL_ID" type="string" />
+		<property name="graduation"  column="GRADUATION" type="string" />
+		<property name="gender"  column="GENDER" type="string" not-null="true"/>
+		
+		 <set name="courses" table="STUD_COURSE_T"
+            inverse="false" lazy="false"  fetch="select" cascade="all">
+            <key column="S_ID" />
+            <many-to-many column="C_ID" class="Course" />
+        </set>
+	</class>
+	<class name="Address" table="Address">
+		<meta attribute="class-description">
+			This Address class contains the Address details.
+		</meta>
+		<id name="id" column="ID" type="int" />
+		<property name="addressLine1" column="ADDR_L1" type="string" not-null="true" />
+		<property name="addressLine2" column="ADDR_L2" type="string" not-null="true" />
+		<property name="city" column="CITY" type="string" />
+		<property name="state" column="STATE" type="string" />
+		<property name="country" column="COUNTRY" type="string" />
+		<property name="zipcode" column="ZIPCODE" type="string" />
+	</class>
+	<class name="Users" table="USERS">
+		<meta attribute="class-description">
+			This Users class contains the Users details.
+		</meta>
+		<id name="id" column="ID" type="int" />
+	    <property name="loginId" column="LOGIN_ID" type="string" not-null="false" />
+	    <property name="password" column="PASSWORD" type="string" not-null="false" />
+	    <property name="roleId" column="ROLE_ID" type="string" not-null="false" />
+		<property name="firstName" column="FIRST_NAME" type="string" not-null="true" />
+		<property name="middleName" column="MIDDLE_NAME" type="string" not-null="false" />
+		<property name="lastName" column="LAST_NAME" type="string" />
+		<property name="dateOfBirth" column="DATE_OF_BIRTH" type="date" not-null="true"/>
+		<property name="legalStatus" column="LEGAL_STATUS" type="string" not-null="true" />
+		<property name="homeNo" column="HOME_NO" type="string" />
+		<property name="officeNo" column="OFFICE_NO" type="string" />
+		<property name="cellNo" column="CELL_NO" type="string" />
+		<property name="emailId" column="EMAIL_ID" type="string" />
+		<property name="hiqualification"  column="HI_QUALIFICATION" type="string" />
+		<property name="homeAddressId" column="HOME_ADDRESS_ID" type="int" />
+		<property name="officeAddressId" column="OFFICE_ADDRESS_ID" type="int" />
+		<property name="joinDate" column="JOIN_DATE" type="date" />
+		<property name="gender"  column="GENDER" type="string" not-null="true"/>
+		<property name="note" column="NOTE" type="string" />
+		
+		<property name="createDate" column="CREATE_DATE" type="date" />
+		
+		<property name="updateDate" column="UPDATE_DATE" type="date" />
+	
+	</class>
+	<class name="Trainee" table="TRAINEE">
+		<meta attribute="class-description">
+			This Trainee class contains the Trainee details.
+		</meta>
+		<id name="traineeId" column="TRAINEE_ID" type="int"/>
+		<property name="skill" column="SKILL" type="string" />
+		<property name="experience" column="EXPERIENCE" type="string" />
+		<property name="prevCompany" column="PREV_COMPANY" type="string" />
+		<property name="note" column="NOTE" type="string" />
+		
+		<property name="createDate" column="CREATE_DATE" type="date" />
+		
+		<property name="updateDate" column="UPDATE_DATE" type="date" />
+		
+		
+	</class>
+	
+</hibernate-mapping>
