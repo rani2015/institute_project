@@ -31,6 +31,9 @@
 		<value>com.institute.model.Address</value>
 		<value>com.institute.model.Users</value>
 		<value>com.institute.model.Trainee</value>
+		<value>com.institute.model.Trainer</value>
+		<value>com.institute.model.Course</value>
+		<value>com.institute.model.Section</value>
 		</list>
 		</property>
 		<property name="hibernateProperties">

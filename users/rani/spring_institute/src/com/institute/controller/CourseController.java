@@ -112,9 +112,9 @@ public class CourseController  {
 			CourseBean courseBean = null;
 			for (Course course : listAllCourse) {
 				courseBean  =new CourseBean();
-				courseBean.setCourseFee(course.getCourseFee());
-				courseBean.setCourseHours(course.getCourseHours());
-				courseBean.setCourseName(course.getCourseName());
+				courseBean.setCourseFee(course.getFee());
+				courseBean.setCourseHours(course.getId());
+				courseBean.setCourseName(course.getName());
 				courseBean.setCourseId(course.getCourseId());
 				beans.add(courseBean);
 			}
@@ -124,17 +124,17 @@ public class CourseController  {
 	}
 	private CourseBean prepareBean(Course course) {
 		CourseBean courseBean  =new CourseBean();
-		courseBean.setCourseFee(course.getCourseFee());
-		courseBean.setCourseHours(course.getCourseHours());
-		courseBean.setCourseName(course.getCourseName());
+		courseBean.setCourseFee(course.getFee());
+		courseBean.setCourseHours(course.getId());
+		courseBean.setCourseName(course.getName());
 		courseBean.setCourseId(course.getCourseId());
 		return courseBean;
 	}
 	private Course prepareModel(CourseBean courseBean) {
 		Course course =new Course();
-		course.setCourseFee(courseBean.getCourseFee());
-		course.setCourseHours(courseBean.getCourseHours());
-		course.setCourseName(courseBean.getCourseName());
+		course.setFee(courseBean.getCourseFee());
+		course.setId(courseBean.getCourseHours());
+		course.setName(courseBean.getCourseName());
 		course.setCourseId(courseBean.getCourseId());
 		return course;
 	}

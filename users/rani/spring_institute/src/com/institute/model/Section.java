@@ -12,11 +12,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Course")
-public class Course implements Serializable {
+@Table(name = "Section")
+public class Section implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String courseId;
+	
 	private String name;
 	@Column(nullable=true)
 	private String description;
@@ -31,16 +31,13 @@ public class Course implements Serializable {
 	private Date createDate;
 	@Column(nullable=true)
 	private Date updateDate;
-	private double fee;
-
-	public Course(){}
 	
-	public Course(String courseId, String name, String status, double fee) {
-		
-		this.courseId = courseId;
+
+	public Section(){}
+	
+	public Section(String name, String status) {
 		this.name = name;
 		this.status = status;
-		this.fee = fee;
 	}
 
 	public String getDescription() {
@@ -112,40 +109,26 @@ public class Course implements Serializable {
 		return name;
 	}
 
-	public void setName(String courseName) {
-		this.name = courseName;
+	public void setName(String sectionName) {
+		this.name = sectionName;
 	}
 
-	public double getFee() {
-		return fee;
-	}
-
-	public void setFee(double courseFee) {
-		this.fee = courseFee;
-	}
+	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO ,generator="my_course_seq")
-	@SequenceGenerator(name="my_course_seq" , sequenceName="COURSE_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO ,generator="my_section_seq")
+	@SequenceGenerator(name="my_section_seq" , sequenceName="SECTION_SEQ")
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int courseHours) {
-		this.id = courseHours;
+	public void setId(int sectionHours) {
+		this.id = sectionHours;
 	}
-	@Column(name="COURSE_ID" , nullable=false)
-	public String getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(String cId) {
-		this.courseId = cId;
-	}
-
+	
 	
 
 	public String toString() {
-		return "[courseId :" + courseId + ", cName :" + name + "]";
+		return "[id :" + id + ", sName :" + name + "]";
 	}
 
 }

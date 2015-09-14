@@ -27,7 +27,7 @@ public class Teacher {
 	private Set<Course> teachCourses =new HashSet<Course>();
 	
 	public void addCourse(Course course){
-		course.getTeachers().add(this);
+	//	course.getTeachers().add(this);
 		teachCourses.add(course);
 	}
 	public void removeCourse(Course course){

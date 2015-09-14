@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,9 +30,16 @@ public class CourseDAOImpl implements CourseDAO {
 	}
 
 	@Override
-	public Course getById(String courseId) {
-		
+	public Course getById(int courseId) {
+		System.out.println("Here in Course getBy Id");
 		return (Course)getSessionFactory().getCurrentSession().get(Course.class,courseId);
+	}
+	@Override
+	public Course getByCourseId(String courseId) {
+		System.out.println("Here in Course getBy Id");
+		Query query=getSessionFactory().getCurrentSession().createQuery("From Course C Where C.courseId=:courseId");
+		query.setString("courseId", courseId);
+		return (Course)query.list().get(0);
 	}
 
 	@Override
